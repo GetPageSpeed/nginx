@@ -463,7 +463,7 @@ ngx_http_v2_header_filter(ngx_http_request_t *r)
         pos = ngx_sprintf(pos, "%03ui", r->headers_out.status);
     }
 
-    if (r->headers_out.server == NULL) {
+    if (r->headers_out.server == NULL && clcf->server_tokens != NGX_HTTP_SERVER_TOKENS_NONE) {
 
         if (clcf->server_tokens == NGX_HTTP_SERVER_TOKENS_ON) {
             ngx_log_debug1(NGX_LOG_DEBUG_HTTP, fc->log, 0,
